@@ -13,3 +13,8 @@ console.log('process pid is', process.pid);
 console.log('start monitoring with: kill -sigusr2', process.pid);
 console.log('build a heap diff with: kill -sigusr2', process.pid);
 console.log('Check your heap diff json with: jsonlint /tmp/heap-diff-' + process.pid + '.json');
+
+process.emit("SIGUSR2");
+setTimeout(function () {
+  process.emit("SIGUSR2");
+}, 10000);
